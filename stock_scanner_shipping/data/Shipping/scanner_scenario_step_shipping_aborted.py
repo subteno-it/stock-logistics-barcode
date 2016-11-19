@@ -5,12 +5,7 @@
 'Put the returned result or message in <res>, as a list of strings.'
 'Put the returned value in <val>, as an integer'
 
-picking = model.browse(terminal.reference_document)
-
-act = 'C'
+act = 'F'
 res = [
-    _('Do you really want to terminate this shipping?'),
+    _('Shipping Aborted.'),
 ]
-if not any(picking.move_lines.mapped(lambda move: not move.linked_move_operation_ids)):
-    act = 'A'
-    val = True

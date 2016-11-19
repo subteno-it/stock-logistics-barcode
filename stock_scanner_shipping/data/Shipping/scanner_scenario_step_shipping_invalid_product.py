@@ -7,6 +7,6 @@
 
 act = 'E'
 res = [
-    _('This product is not part of this shipment!'),
+    _('Invalid product!'),
 ]
 val = True
