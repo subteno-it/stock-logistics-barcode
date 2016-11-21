@@ -5,7 +5,7 @@
 'Put the returned result or message in <res>, as a list of strings.'
 'Put the returned value in <val>, as an integer'
 
-picking = model.browse(terminal.reference_document)
+picking = env[terminal.tmp_val5].browse(terminal.reference_document)
 picking.do_transfer()
 
 act = 'F'

@@ -6,8 +6,15 @@
 'Put the returned value in <val>, as an integer'
 
 picking = model.search([('name', '=', message)])
-picking.pack_operation_ids.unlink()
+terminal.tmp_val5 = 'stock.picking'
+
+if tracer == 'wave':
+    picking = env['stock.picking.wave'].search([('name', '=', message)])
+    terminal.tmp_val5 = 'stock.picking.wave'
+
 terminal.reference_document = picking.id
+picking.pack_operation_ids.unlink()
+picking.move_lines.mapped('linked_move_operation_ids').unlink()
 
 act = 'M'
 res = [

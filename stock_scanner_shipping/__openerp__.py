@@ -13,6 +13,7 @@
     'installable': True,
     'depends': [
         'stock_scanner',
+        'stock_picking_wave',
     ],
     'data': [
         'data/Stock.scenario',
