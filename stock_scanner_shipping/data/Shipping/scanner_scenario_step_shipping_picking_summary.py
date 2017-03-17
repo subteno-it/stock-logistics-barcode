@@ -13,6 +13,12 @@ if tracer == 'wave':
     terminal.tmp_val5 = 'stock.picking.wave'
 
 terminal.reference_document = picking.id
+
+# Copy locations on moves
+for operation in picking.pack_operation_ids:
+    operation.mapped('linked_move_operation_ids.move_id').write({'location_id': operation.location_id.id})
+
+# Remove existing pack operations
 picking.pack_operation_ids.unlink()
 picking.move_lines.mapped('linked_move_operation_ids').unlink()
 
