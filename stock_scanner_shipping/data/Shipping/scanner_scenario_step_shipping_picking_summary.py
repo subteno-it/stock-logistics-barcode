@@ -14,6 +14,10 @@ if tracer == 'wave':
 
 terminal.reference_document = picking.id
 
+# Prepare picking if not already done
+if not picking.pack_operation_ids:
+    picking.do_prepare_partial()
+
 # Copy locations on moves
 for operation in picking.pack_operation_ids:
     operation.mapped('linked_move_operation_ids.move_id').write({'location_id': operation.location_id.id})
