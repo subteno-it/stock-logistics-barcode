@@ -17,7 +17,7 @@ if tracer == 'loop':
         'product_uom_id': move.product_uom.id,
         'product_qty': quantity,
         'location_id': location.id,
-        'location_dest_id': picking.location_id.id,
+        'location_dest_id': picking.location_dest_id.id,
         'linked_move_operation_ids': [(0, 0, {
             'move_id': move.id,
             'qty': quantity,
