@@ -9,7 +9,7 @@ prodlot_name = message
 move = env['stock.move'].browse(int(terminal.tmp_val1))
 
 prodlot = env['stock.production.lot'].search([('name', '=', prodlot_name)])
-if not prodlot:
+if message and not prodlot:
     prodlot = env['stock.production.lot'].create({
         'name': prodlot_name,
         'product_id': move.product_id.id,

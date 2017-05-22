@@ -11,6 +11,7 @@ if tracer == 'loop':
     quantity = float(terminal.tmp_val2)
     location = env['stock.location'].search([('name', '=', message)])
 
+    pack_lot_ids = []
     if terminal.tmp_val3:
         pack_lot_ids = [
             (0, 0, {'lot_id': int(terminal.tmp_val3), 'qty': quantity}),
