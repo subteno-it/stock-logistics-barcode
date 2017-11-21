@@ -811,6 +811,8 @@ class Sentinel(object):
                 # If we double clicked, auto-validate
                 if mouse_info[4] & curses.BUTTON1_DOUBLE_CLICKED:
                     return keys[highlighted]
+            elif key == 'KEY_RESIZE':
+                self._handle_key_resize()
 
             # Avoid going out of the list
             highlighted %= len(entries)
@@ -820,6 +822,11 @@ class Sentinel(object):
                 math.floor(math.log10(max(1, highlighted))) + 1)
             if highlighted and digit_key and current_nb_char >= nb_char:
                 return keys[highlighted]
+
+    def _handle_key_resize(self):
+        height, width = self.screen.getmaxyx()
+        self._set_screen_size(width, height)
+        self.screen.clear()
 
     def _menu_display(self, entries, highlighted, title=None):
         """
